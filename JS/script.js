@@ -80,8 +80,7 @@ let CounterObserver = new IntersectionObserver(
     threshold: window.innerWidth > 768 ? 0.4 : 0.3,
   }
 );
-
-CounterObserver.observe(section_counter);
+if(section_counter) CounterObserver.observe(section_counter);
 
 // --------------- Articles ---------------
 var articles = new Swiper(".article-carrousel", {
@@ -108,24 +107,45 @@ var articles = new Swiper(".article-carrousel", {
     }
   });
 
-  // --------------- Hambourger Menu ---------------
-  const btn = document.querySelector('.menu-btn');
-  const navigationLinks = document.querySelector('.navigation-links ul')
-  navigationLinks.style.width='0%'
-  btn.addEventListener('click', (e) => {
-    e.preventDefault()
-    if(navigationLinks.style.width==='0%'){
-      navigationLinks.style.width = '100%'
-      btn.querySelector('img').setAttribute('src','images/close.svg')
-    }
-    else{
-      navigationLinks.style.width = '0%'
-      btn.querySelector('img').setAttribute('src','images/menu.svg')
-    }
+// --------------- Hambourger Menu ---------------
+const btn = document.querySelector('.menu-btn');
+const navigationLinks = document.querySelector('.navigation-links ul')
+navigationLinks.style.width='0%'
+btn.addEventListener('click', (e) => {
+  e.preventDefault()
+  if(navigationLinks.style.width==='0%'){
+    navigationLinks.style.width = '100%'
+    btn.querySelector('img').setAttribute('src','images/close.svg')
+  }
+  else{
+    navigationLinks.style.width = '0%'
+    btn.querySelector('img').setAttribute('src','images/menu.svg')
+  }
+})
+window.addEventListener('scroll', ()=>{
+  if(navigationLinks.style.width!=='0%'){
+    navigationLinks.style.width = '0%'
+    btn.querySelector('img').setAttribute('src','images/menu.svg')
+  }
+})
+
+// -------------- Orange effect for Work grid
+const works_items = Array.from(document.querySelectorAll('.works .single-work'))
+works_items.forEach((work_item) => {
+  const link = work_item.querySelector('a')
+  const img = link.querySelector('img')
+  work_item.addEventListener('mouseover',(e) => {
+    work_item.style.color = 'var(--clr-primary-200)'
+    work_item.style.backgroundColor = 'var(--clr-accent-500)'
+    link.style.color = 'var(--clr-primary-200)'
+    img.setAttribute('src', '../images/goLinkOrange.svg')
   })
-  window.addEventListener('scroll', ()=>{
-    if(navigationLinks.style.width!=='0%'){
-      navigationLinks.style.width = '0%'
-      btn.querySelector('img').setAttribute('src','images/menu.svg')
-    }
+  work_item.addEventListener('mouseout',(e) => {
+    work_item.style.color = 'var(--clr-primary-100)'
+    work_item.style.backgroundColor = 'var(--clr-neutral-100)'
+    link.style.color = 'var(--clr-primary-100)'
+    img.setAttribute('src', '../images/goLinkBlack.svg')
   })
+})
+// const c= document.querySelector('')
+// console.log(c)

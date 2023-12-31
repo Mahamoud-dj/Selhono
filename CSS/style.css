@@ -6,6 +6,7 @@
     --clr-accent-200: #4D5053;
     --clr-accent-300: #D8A876;
     --clr-accent-400: #E7E7E7;
+    --clr-accent-500: #f9f9f9;
     --clr-primary-100: #292F36;
     --clr-primary-200: #C76904;
     --clr-primary-300: #CDA274;
@@ -163,6 +164,7 @@ li a.active{
 .works{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    row-gap: 70px;
     padding: 0 45px;
     margin-top: 95px;
 }
@@ -174,7 +176,8 @@ li a.active{
     text-align: center;
     margin-left: auto;
     margin: 0 auto 30px;
-    /* margin-bottom: 30px; */
+    padding: 70px 15px ;
+    transition: .3s ease-in-out;
 }
 .works .single-work h3{
     font-family: var(--ff-secondary);
@@ -191,6 +194,7 @@ li a.active{
     font-size: 1.125rem;
     font-weight: var(--fw-semi-bold);
     letter-spacing: 1.2px;
+    transition: .3s ease-in-out;
 }
 .works .single-work a img{
     margin-left: 10px;
@@ -348,14 +352,14 @@ li a.active{
 }
 
 /* --- Projects --- */
-.projects h1, .article h1{
+.projects h1, .article h1, .how-works h1{
     font-size: 3.75rem;
     font-family: var(--ff-secondary);
     text-transform: capitalize;
     text-align: center;
     color: var(--clr-primary-100);
 }
-.projects p, .article p{
+.projects p, .article p, .how-works p{
     font-size: 1.75rem;
     text-align: center;
     color: var(--clr-accent-200);
@@ -445,6 +449,7 @@ li a.active{
 .score-board div span{
     font-size: 1.375rem;
     color: var(--clr-accent-200);
+    text-align: center;
     text-transform: capitalize;
     letter-spacing: 1.1px;
 }
@@ -584,7 +589,87 @@ footer div ul li h2{
     color: var(--clr-accent-200);
 }
 
+/*--- Banniere ---*/
+.banniere{
+    position: relative;
+    height: 356px;
+    margin-top: 66px;
+    background-image: url('../images/13.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.banniere h1{
+    font-size: 4.375rem;
+    color: var(--clr-neutral-100);
+    font-family: var(--ff-secondary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
+
+/*//////////////////       SERVICES PAGE       /////////////////*/
+.how-works{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 300px;
+}
+.all-works{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(auto,625px));
+    grid-template-rows: repeat(4,485px);
+    row-gap: 121px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.all-works .all-work-text span{
+    display: block;
+    text-align: right;
+    font-size: 5.625rem;
+    font-family: var(--ff-secondary);
+    color: var(--clr-primary-200);
+    margin-bottom: 151px;
+}
+.all-works .all-work-text.left span{
+    text-align: left;
+}
+.all-works .all-work-text h2{
+    margin-left: 93px;
+    font-size: 2.18rem;
+    font-family: var(--ff-secondary);
+    margin-bottom: 11px;
+}
+.all-works .all-work-text.left h2, .all-works .all-work-text.left p{
+    margin-left: 0;
+    margin-right: 93px;
+}
+.all-works .all-work-text p{
+    text-align: left;
+    max-width: 456px;
+    margin-left: 93px;
+    font-size: 1.375rem;
+    margin-bottom: 81px;
+}
+.all-works .all-work-img{
+    border-top-right-radius: 300px;
+    border-bottom-left-radius: 400px;
+    transform: translateX(5%);
+    overflow: hidden;
+}
+.all-works .all-work-img.right{
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 400px;
+    border-top-left-radius: 300px;
+    transform: translateX(-5%);
+}
+.all-works .all-work-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* ------------- Media query -------------*/
 @media (max-width: 1450px){
@@ -596,9 +681,9 @@ footer div ul li h2{
     .works{
         grid-template-columns: repeat(2, 1fr);
     }
-    .works .single-work p{
+    /* .works .single-work p{
         margin-bottom: 25px;
-    }
+    } */
     .works .single-work:last-child{
         grid-column: span 2;
     }
@@ -625,19 +710,21 @@ footer div ul li h2{
         top: 100%;
         right: 0;
         width: 0%;
-        height: 100vh;
-        display: block;
-        padding-top: 60px;
+        height: calc(100vh - 355px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: start;
         margin-top: 15px;
         background-color: var(--clr-primary-100);
         transition: .5s ease-in;
         overflow: hidden;
     }
     .navigation-links ul li{
-        margin-bottom: 80px;
         border-bottom: .2px solid var(--clr-neutral-100);
         padding-bottom: 5px;
-        margin-left: 60px;
+        margin: 0 auto;
+        width: 95%;
     }
     .navigation-links ul li:nth-last-child(3){
         display: none;
@@ -653,7 +740,8 @@ footer div ul li h2{
         position: static;
         display: flex;
         align-items: stretch;
-        margin-left: 60px;
+        width: 95%;
+        margin: 0 auto;
     }
 
     /* ---- Projects ----*/
@@ -670,6 +758,15 @@ footer div ul li h2{
     }
     .parteners img{
         margin-bottom: 50px;
+    }
+
+    /* --- Panneau ---*/
+    .panneau .img1{
+        width: 72%;
+        border-top-right-radius: 350px;
+    }
+    .panneau ::after{
+        width: 65%;
     }
 
     /* --- Statistics ---*/
@@ -708,6 +805,35 @@ footer div ul li h2{
     .works .single-work:last-child{
         grid-column: span 1;
     }
+    .all-works{
+        grid-template-rows: repeat(4, 385px);
+    }
+    .all-works .all-work-text span{
+        margin-bottom: 50px;
+    }
+    .all-works .all-work-text p{
+        font-size: 1.2rem;
+    }
+    .all-works .all-work-img{
+        border-top-right-radius: 236px;
+        border-bottom-left-radius: 315px;
+        transform: translateX(0%);
+    }
+    .all-works .all-work-img.right{
+        border-bottom-right-radius: 315px;
+        border-top-left-radius: 236px;
+        transform: translateX(0%);
+    }
+}
+@media (max-width: 860px){
+    /* All works */
+    .all-works .all-work-text span{
+        font-size: 5.1rem;
+    }
+    .all-works .all-work-text h2{
+        font-size: 1.8rem;
+    }
+
 }
 @media (max-width: 800px){
     /* --- Projects ---*/
@@ -736,12 +862,55 @@ footer div ul li h2{
         border-top-right-radius: 350px;
     }
 }
+@media (max-width: 736px) {
+    .all-works{
+        grid-template-columns: minmax(auto, 650px);
+        grid-template-rows: repeat(8,485px);
+        grid-template-areas: 
+        "all-work-text-1"
+        "all-work-img-1"
+        "all-work-text-2"
+        "all-work-img-2"
+        "all-work-text-3"
+        "all-work-img-3"
+        "all-work-text-4"
+        "all-work-img-4"
+        ;
+    }
+    .all-works :nth-child(1){
+        grid-area: all-work-img-1;
+    }
+    .all-works :nth-child(2){
+        grid-area: all-work-text-1;
+    }
+    .all-works :nth-child(3){
+        grid-area: all-work-text-2;
+    }
+    .all-works :nth-child(4){
+        grid-area: all-work-img-2;
+    }
+    .all-works :nth-child(5){
+        grid-area: all-work-img-3;
+    }
+    .all-works :nth-child(6){
+        grid-area: all-work-text-3;
+    }
+    .all-works :nth-child(7){
+        grid-area: all-work-text-4;
+    }
+    .all-works :nth-child(8){
+        grid-area: all-work-img-4;
+    }
+}
 @media (max-width: 700px) {
     footer{
         grid-template-columns: repeat(2, 1fr);
     }
     footer div:first-child, footer div:nth-last-child(2), .Copyright{
         grid-column: span 2;
+    }
+    .testimonials h1, .contact h1{
+        font-size: 2.6rem;
     }
 }
 @media (max-width: 630px){
@@ -752,6 +921,9 @@ footer div ul li h2{
     .panneau .img1{
         width: 92%;
         border-top-right-radius: 360px;
+    }
+    .testimonials h1, .contact h1{
+        font-size: 2.3rem;
     }
 }
 @media (max-width: 565px){
@@ -774,6 +946,9 @@ footer div ul li h2{
     .panneau .img1 .call{
         margin-bottom: 0;
     }
+    .testimonials h1, .contact h1{
+        font-size: 1.8rem;
+    }
 }
 @media (max-width: 465px){
     /*---- Panneau ---*/
@@ -787,6 +962,85 @@ footer div ul li h2{
     }
     .panneau .img1 .call{
         margin-bottom: 20px;
+    }
+    .all-works{
+        grid-template-columns: minmax(auto, 539px);
+        grid-template-rows: repeat(8,400px);
+    }
+    .all-works .all-work-img{
+        border-top-right-radius: 210px;
+        border-bottom-left-radius: 262px;
+    }
+    .all-works .all-work-img.right{
+        border-bottom-right-radius: 210px;
+        border-top-left-radius: 262px;
+    }
+
+    /*---- Statistics ----*/
+    .score-board div .number{
+        font-size: 3.6rem;
+    }
+    .score-board div span{
+        font-size: 0.85rem;
+    }
+
+    /*--- Testimonials ---*/
+    .testimonials h1{
+        font-size: 1.5rem;
+    }
+    .contact h1{
+        font-size: 1.8rem;
+    }
+    .contact p{
+        font-size: 1.1rem;
+    }
+    .swiper-slide .person b{
+        font-size: 1.1rem;
+    }
+    .swiper-slide .person i{
+        font-size: 0.9rem;
+    }
+    .swiper-slide p{
+        font-size: 1.1rem;
+    }
+    .swiper-slide .person img{
+        height: 55px;
+        width: 55px;
+    }
+
+    .projects h1, .article h1, .how-works h1{
+        font-size: 2.5rem;
+    }
+    .projects p, .article p, .how-works p{
+        font-size: 1.5rem;
+    }
+    footer div:first-child p{
+        text-align: center;
+        font-size: 1.3rem;
+    }
+    footer div ul li h2{
+        font-size: 1.3rem;
+    }
+    footer div ul li a{
+        font-size: 1.1rem;
+    }
+    .Copyright{
+        font-size: 1.1rem;
+    }
+
+    /*--- Projects ----*/
+    .projects-grid-item{
+        height: 500px;
+    }
+    .details b{
+        font-size: 1.4rem;
+    }
+    .details i{
+        font-size: 1rem;
+    }
+    .viewProject{
+        height: 50px;
+        width: 50px;
     }
 }
 @media (max-width: 400px){
@@ -802,11 +1056,23 @@ footer div ul li h2{
         width: 100%;
         border-top-right-radius: 300px;
     }
+
+    .testimonials h1, .contact h1{
+        font-size: 1.4rem;
+    }
 }
 @media (max-width: 365px){
     /*---- Panneau ---*/
     .btn{
         padding: 25px 30px;
+    }
+    .testimonials h1, .contact h1{
+        font-size: 1rem;
+    }
+
+    /*---footer---*/
+    footer div:first-child p{
+        font-size: 1.3rem;
     }
 }
 
